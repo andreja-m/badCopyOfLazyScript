@@ -32,8 +32,9 @@ function main()
     clear)
       clear;;
     exit)
-      exit
-      ;;
+      exit;;
+    *)
+      echo "command doesn't exist"
   esac
   echo "press enter to show menu again"
 done
