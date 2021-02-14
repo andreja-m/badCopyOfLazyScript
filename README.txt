@@ -22,3 +22,7 @@ More will be updated and upgraded, for example:
 - installation with CLI animation 
 - and much more
 
+update 0.2:
+- software existance chacking in machine is added
+- error handling updated
+
