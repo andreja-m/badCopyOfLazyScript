@@ -17,7 +17,7 @@ You are welcome to comment, give advices, critics, etc.
 This is just a trial version.
 
 More will be updated and upgraded, for example:
-- script will check if software is installed in distribution
+- script will check if software is installed in distribution √
 - will ask for permision if user wants to install
 - installation with CLI animation 
 - and much more
