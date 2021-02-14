@@ -41,6 +41,13 @@ function editors()
   echo "00) back"
 }
 
+function error()
+{
+  echo "you dont have software installed"
+  read -t 1
+  back
+}
+
 #BACK FUNCTIONS
 
 function inputMainMenu()
@@ -76,12 +83,26 @@ function inputAccess()
   read inp
   if [ $inp -eq 1 ]
   then
-    cmatrix
-    back
+    if command -v cmatrix
+    then
+      cmatrix
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 2 ]
   then
-    neofetch
-    read
+    if command -v neofetch
+    then
+      neofetch
+      read
+      back
+    else
+      error
+    fi
+  elif [ $inp -eq 3 ]
+  then
+    sl
     back
   elif [ $inp -eq 00 ]
   then
@@ -99,22 +120,45 @@ function inpuTools()
   read inp
   if [ $inp -eq 1 ]
   then
-    htop
-    back
+    if command -v htop
+    then
+      htop
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 2 ]
   then
-    ifconfig
-    read
-    back
+    if command -v ifconfig
+    then
+      ifconfig
+      read
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 3 ]
   then
-    netstat
-    back
+    if command -v netstat
+    then
+      netstat
+      read
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 123 ]
   then
     echo "YOU HAVE FOUND SECRET PLACE"
-    wireshark
-    back
+    if command -v wireshark
+    then
+      wireshark
+      back
+    else
+      echo "unfortunately you dont have wireshark installed..."
+      read -t 1
+      back
+    fi
   elif [ $inp -eq 00 ]
   then
     back
@@ -131,12 +175,22 @@ function inputEditors()
   read inp
   if [ $inp -eq 1 ]
   then
-    vim
-    back
+    if command -v vim
+    then
+      vim
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 2 ]
   then
-    vi
-    back
+    if command -v vi
+    then
+      vi
+      back
+    else
+      error
+    fi
   elif [ $inp -eq 00 ]
   then
     back
