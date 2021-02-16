@@ -19,12 +19,13 @@ function mainMenu()
   echo "options"
   echo "1) Accessories          2) Tools"
   echo "3) Editors"
-  echo "00) exit"
+  echo "xx) exit"
 }
 
 function access()
 {
   echo "1) cmatrix              2) neofetch"
+  echo "3) sl"
   echo "00) back"
 }
 
@@ -44,8 +45,9 @@ function editors()
 function error()
 {
   echo "you dont have software installed"
-  read -t 1
-  back
+  read -t 0.5
+  echo "do you want to install tool?"
+  echo "if you do press y [y/n]"
 }
 
 #BACK FUNCTIONS
@@ -63,12 +65,13 @@ function inputMainMenu()
     inpuTools
     back
   elif [ $inp -eq 3 ]
-  then 
+  then
     editors
     inputEditors
     back
-  elif [ $inp -eq 00 ]
+  elif [ $inp == xx ]
   then
+    clear
     exit
   else
     clear
@@ -89,6 +92,13 @@ function inputAccess()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt install cmatrix
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 2 ]
   then
@@ -99,11 +109,30 @@ function inputAccess()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install neofetch
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 3 ]
   then
-    sl
-    back
+    if command -v sl
+    then
+      sl
+      back
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install sl
+      else
+        back
+      fi
+    fi
   elif [ $inp -eq 00 ]
   then
     back
@@ -126,6 +155,13 @@ function inpuTools()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install htop
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 2 ]
   then
@@ -136,6 +172,13 @@ function inpuTools()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install ifconfig
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 3 ]
   then
@@ -146,6 +189,13 @@ function inpuTools()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install netstat
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 123 ]
   then
@@ -156,8 +206,14 @@ function inpuTools()
       back
     else
       echo "unfortunately you dont have wireshark installed..."
-      read -t 1
-      back
+      echo "do you want to install wireshark [y/n]"
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install wireshark
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 00 ]
   then
@@ -181,6 +237,13 @@ function inputEditors()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install vim
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 2 ]
   then
@@ -190,6 +253,13 @@ function inputEditors()
       back
     else
       error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install vi
+      else
+        back
+      fi
     fi
   elif [ $inp -eq 00 ]
   then
