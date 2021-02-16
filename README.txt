@@ -10,7 +10,7 @@ to start script:
     ./lazy.sh
 4) hope you enjoy :)
 
-lazy.sh is idea for project i had since i started, but it didn't work. So l.sh i simple one i made just to test if the idea would work.
+lazy.sh is idea for project i had since i started with bash scripting, but it didn't work. So l.sh i simple one i made just to test if the idea would work.
 And it did.
 You are welcome to comment, give advices, critics, etc. 
 
