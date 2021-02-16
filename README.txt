@@ -18,7 +18,7 @@ This is just a trial version.
 
 More will be updated and upgraded, for example:
 - script will check if software is installed in distribution √
-- will ask for permision if user wants to install
+- will ask for permision if user wants to install √
 - installation with CLI animation 
 - and much more
 
@@ -26,3 +26,6 @@ update 0.2:
 - software existance chacking in machine is added
 - error handling updated
 
+update 0.3:
+- installations for curently existing programs are added
+- some minor changes
