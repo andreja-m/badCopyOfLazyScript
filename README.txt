@@ -3,6 +3,7 @@ Link:
 https://github.com/arismelachroinos/lscript
 
 to start script:
+-download code, or go to terminal and type: git clone https://github.com/doomguy-369/badCopyOfLazyScript
 1) you need to go in badCopyOfLazyScript directorium
 2) change permissions
     chmod +x lazy.sh
