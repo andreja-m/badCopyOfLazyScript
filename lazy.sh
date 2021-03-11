@@ -25,14 +25,17 @@ function mainMenu()
 function access()
 {
   echo "1) cmatrix              2) neofetch"
-  echo "3) sl"
+  echo "3) sl                   4) hollywood"
+  echo "5) cheat.sh"
   echo "00) back"
 }
 
 function tools()
 {
   echo "1) htop                 2) ifconfig"
-  echo "3) netstat"
+  echo "3) netstat              4) nnn"
+  echo "5) ncdu                 6) speedtest-cli"
+  echo "7) terminator"
   echo "00) back"
 }
 
@@ -50,6 +53,22 @@ function error()
   echo "if you do press y [y/n]"
 }
 
+#SPINNER
+
+spinner=( Ooooo oOooo ooOoo oooOo ooooO )
+
+function spin()
+{
+  while [ 1 ]
+  do
+    for i in "${spinner[@]}"
+    do
+      echo -ne "\r$i"
+      sleep 0.2
+    done
+  done
+}
+
 #BACK FUNCTIONS
 
 function inputMainMenu()
@@ -59,6 +78,7 @@ function inputMainMenu()
   then
     access
     inputAccess
+    back
   elif [ $inp -eq 2 ]
   then
     tools
@@ -133,6 +153,26 @@ function inputAccess()
         back
       fi
     fi
+  elif [ $inp -eq 4 ]
+  then
+    if command -v hollywood
+    then
+      hollywood
+      back
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install hollywood
+      else
+        back
+      fi
+    fi
+  elif [ $inp -eq 5 ]
+  then
+    curl cheat.sh
+    read
   elif [ $inp -eq 00 ]
   then
     back
@@ -193,6 +233,72 @@ function inpuTools()
       if [ $inp == y ]
       then
         sudo apt-get install netstat
+      else
+        back
+      fi
+    fi
+  elif [ $inp -eq 4 ]
+  then
+    if command -v nnn
+    then
+      nnn
+      back
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install nnn
+      else
+        back
+      fi
+    fi
+  elif [ $inp -eq 5 ]
+  then
+    if command -v ncdu
+    then
+      ncdu
+      back
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt install ncdu
+      else
+        back
+      fi
+    fi
+  elif [ $inp -eq 6 ]
+  then
+    if command -v speedtest
+    then
+      speedtest
+      echo
+      echo "DONE"
+      read
+      back
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt install speedtest-cli
+      else
+        back
+      fi
+    fi
+  elif [ $inp -eq 7 ]
+  then
+    if command -v terminator
+    then
+      terminator
+    else
+      error
+      read inp
+      if [ $inp == y ]
+      then
+        sudo apt-get install terminator
       else
         back
       fi
