@@ -31,3 +31,6 @@ update 0.2:
 update 0.3:
 - installations for curently existing programs are added
 - some minor changes
+
+update 0.3.1
+- some tools and accessories are added
