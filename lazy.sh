@@ -18,7 +18,8 @@ function mainMenu()
 {
   echo "options"
   echo "1) Accessories          2) Tools"
-  echo "3) Editors"
+  echo "3) Editors              4) Pen-Test"
+  echo "h) HELP"
   echo "xx) exit"
 }
 
@@ -41,13 +42,19 @@ function tools()
 
 function editors()
 {
-  echo "1) vim                  2) vi"
+  echo "1) vim                  2) sublime-text"
   echo "00) back"
+}
+
+function Pen-Test()
+{
+	echo "1) Metasploit"
+	echo "00) back"
 }
 
 function error()
 {
-  echo "you dont have software installed"
+  echo "you don't have software installed"
   read -t 0.5
   echo "do you want to install tool?"
   echo "if you do press y [y/n]"
@@ -73,23 +80,35 @@ function spin()
 
 function inputMainMenu()
 {
-  read inp
-  if [ $inp -eq 1 ]
+  read INP
+  if [ $INP -eq 1 ]
   then
     access
     inputAccess
     back
-  elif [ $inp -eq 2 ]
+  elif [ $INP -eq 2 ]
   then
     tools
     inpuTools
     back
-  elif [ $inp -eq 3 ]
+  elif [ $INP -eq 3 ]
   then
     editors
     inputEditors
     back
-  elif [ $inp == xx ]
+  elif [ $INP -eq 4 ]
+  then
+  	Pen-Test
+  	inputPen-Test
+  elif [ $INP == h ]
+  then
+  	cd -
+  	clear
+  	cat README.txt
+  	read
+  	cd art
+  	back
+  elif [ $INP == xx ]
   then
     clear
     exit
@@ -103,8 +122,8 @@ function inputMainMenu()
 
 function inputAccess()
 {
-  read inp
-  if [ $inp -eq 1 ]
+  read INP
+  if [ $INP -eq 1 ]
   then
     if command -v cmatrix
     then
@@ -112,15 +131,15 @@ function inputAccess()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt install cmatrix
       else
         back
       fi
     fi
-  elif [ $inp -eq 2 ]
+  elif [ $INP -eq 2 ]
   then
     if command -v neofetch
     then
@@ -129,15 +148,15 @@ function inputAccess()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install neofetch
       else
         back
       fi
     fi
-  elif [ $inp -eq 3 ]
+  elif [ $INP -eq 3 ]
   then
     if command -v sl
     then
@@ -145,15 +164,15 @@ function inputAccess()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install sl
       else
         back
       fi
     fi
-  elif [ $inp -eq 4 ]
+  elif [ $INP -eq 4 ]
   then
     if command -v hollywood
     then
@@ -161,19 +180,19 @@ function inputAccess()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install hollywood
       else
         back
       fi
     fi
-  elif [ $inp -eq 5 ]
+  elif [ $INP -eq 5 ]
   then
     curl cheat.sh
     read
-  elif [ $inp -eq 00 ]
+  elif [ $INP -eq 00 ]
   then
     back
   else
@@ -186,8 +205,8 @@ function inputAccess()
 
 function inpuTools()
 {
-  read inp
-  if [ $inp -eq 1 ]
+  read INP
+  if [ $INP -eq 1 ]
   then
     if command -v htop
     then
@@ -195,15 +214,15 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install htop
       else
         back
       fi
     fi
-  elif [ $inp -eq 2 ]
+  elif [ $INP -eq 2 ]
   then
     if command -v ifconfig
     then
@@ -212,15 +231,15 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install ifconfig
       else
         back
       fi
     fi
-  elif [ $inp -eq 3 ]
+  elif [ $INP -eq 3 ]
   then
     if command -v netstat
     then
@@ -229,15 +248,15 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install netstat
       else
         back
       fi
     fi
-  elif [ $inp -eq 4 ]
+  elif [ $INP -eq 4 ]
   then
     if command -v nnn
     then
@@ -245,15 +264,15 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install nnn
       else
         back
       fi
     fi
-  elif [ $inp -eq 5 ]
+  elif [ $INP -eq 5 ]
   then
     if command -v ncdu
     then
@@ -261,15 +280,15 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt install ncdu
       else
         back
       fi
     fi
-  elif [ $inp -eq 6 ]
+  elif [ $INP -eq 6 ]
   then
     if command -v speedtest
     then
@@ -280,30 +299,30 @@ function inpuTools()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt install speedtest-cli
       else
         back
       fi
     fi
-  elif [ $inp -eq 7 ]
+  elif [ $INP -eq 7 ]
   then
     if command -v terminator
     then
       terminator
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install terminator
       else
         back
       fi
     fi
-  elif [ $inp -eq 123 ]
+  elif [ $INP -eq 123 ]
   then
     echo "YOU HAVE FOUND SECRET PLACE"
     if command -v wireshark
@@ -313,15 +332,15 @@ function inpuTools()
     else
       echo "unfortunately you dont have wireshark installed..."
       echo "do you want to install wireshark [y/n]"
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install wireshark
       else
         back
       fi
     fi
-  elif [ $inp -eq 00 ]
+  elif [ $INP -eq 00 ]
   then
     back
   else
@@ -334,8 +353,8 @@ function inpuTools()
 
 function inputEditors()
 {
-  read inp
-  if [ $inp -eq 1 ]
+  read INP
+  if [ $INP -eq 1 ]
   then
     if command -v vim
     then
@@ -343,31 +362,52 @@ function inputEditors()
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
         sudo apt-get install vim
       else
         back
       fi
     fi
-  elif [ $inp -eq 2 ]
+  elif [ $INP -eq 2 ]
   then
-    if command -v vi
+    if command -f subl
     then
-      vi
+      subl
       back
     else
       error
-      read inp
-      if [ $inp == y ]
+      read INP
+      if [ $INP == y ]
       then
-        sudo apt-get install vi
+        echo "***	Installing GPG key...	***"
+        wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+        echo "***	Ensuring apt is set up to work with https sources... ***"
+        sudo apt-get install apt-transport-https
+        echo "*** For Stqable relese press 1 and hit enter, for Dev relese press 2 and hit enter: ***"
+        read INP
+        if [ $INP -eq 1 ]
+        then
+          echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+        elif [ $INP -eq 2 ] 
+          then
+        echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+        else
+          echo "your input in invalid command"
+          back
+        fi
+        echo "	Updating apt sources and installing Sublime-Text 	***"
+        read -t 1
+        sudo apt-get update
+        sudo apt-get install sublime-text
+        subl
+        back
       else
         back
       fi
     fi
-  elif [ $inp -eq 00 ]
+  elif [ $INP -eq 00 ]
   then
     back
   else
@@ -376,6 +416,36 @@ function inputEditors()
     read -t 1
     back
   fi
+}
+
+function inputPen-Test()
+{
+	read INP
+	if [ $INP -eq 1 ]
+	then
+		if command -v msfconsole
+		then
+			msfconsole
+			back
+		else
+			error
+			read INP
+			if [ $INP == y ]
+			then
+				curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  				chmod 755 msfinstall && \
+  				./msfinstall
+  				back
+  			else
+  				back
+  			fi
+  		fi
+  	else
+  		clear
+  		echo "unknown command"
+  		read -t 1
+  		back
+  	fi
 }
 
 function back()
