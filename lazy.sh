@@ -372,7 +372,7 @@ function inputEditors()
     fi
   elif [ $INP -eq 2 ]
   then
-    if command -f subl
+    if command -v subl
     then
       subl
       back
