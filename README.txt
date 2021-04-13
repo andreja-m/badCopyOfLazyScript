@@ -1,4 +1,4 @@
-#LAZY
+# LAZY
 
 This is bad copy of software called LazyScript.
 Link:
