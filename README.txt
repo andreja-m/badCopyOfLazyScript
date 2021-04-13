@@ -1,3 +1,5 @@
+#LAZY
+
 This is bad copy of software called LazyScript.
 Link:
 https://github.com/arismelachroinos/lscript
