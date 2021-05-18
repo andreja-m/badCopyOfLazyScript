@@ -19,37 +19,69 @@ function mainMenu()
   echo "options"
   echo "1) Accessories          2) Tools"
   echo "3) Editors              4) Pen-Test"
-  echo "h) HELP"
+  echo "5) Programming          s) Scripts"
+  echo "h) HELP                 pp) PersonalPref"
   echo "xx) exit"
 }
 
 function access()
 {
+  echo "=============Accessories==============="
   echo "1) cmatrix              2) neofetch"
   echo "3) sl                   4) hollywood"
-  echo "5) cheat.sh"
+  echo "5) cheat.sh             6) VLC Player"
   echo "00) back"
 }
 
 function tools()
 {
+  echo "=================Tools==================="
   echo "1) htop                 2) ifconfig"
   echo "3) netstat              4) nnn"
   echo "5) ncdu                 6) speedtest-cli"
-  echo "7) terminator"
+  echo "7) terminator           8) git"
+  echo "9) apache               10) nginx"
+  echo "11)mariadb              12) docker"
   echo "00) back"
 }
 
 function editors()
 {
+  echo "===================Editors================"
   echo "1) vim                  2) sublime-text"
   echo "00) back"
 }
 
 function Pen-Test()
 {
-	echo "1) Metasploit"
-	echo "00) back"
+  echo "================Pen-Test================"
+  echo "1) Metasploit"
+  echo "00) back"
+}
+
+function programming()
+{
+  echo "===============PTHON=================="
+  echo "1) SQLAlchemy           2)Flask"
+  echo "3) Django               4) Virtualenv"
+  echo "00) back"
+}
+
+function scripts()
+{
+  echo "=================doomguy==================="
+  echo "1) awc                  2) docker LAMP/LAG"
+  echo "3) getInfo              4) taskMaster"
+  echo "5) passGen"
+  echo "00) back"
+}
+
+function personalPref()
+{
+  echo "1) cl                   2) update system"
+  echo "3) upgrade system       4) One-Line PortScanner"
+  echo "5) parrotools"
+  echo "00) back"
 }
 
 function error()
@@ -83,23 +115,43 @@ function inputMainMenu()
   read INP
   if [ $INP -eq 1 ]
   then
+    clear
     access
     inputAccess
     back
   elif [ $INP -eq 2 ]
   then
+    clear
     tools
     inpuTools
     back
   elif [ $INP -eq 3 ]
   then
+    clear
     editors
     inputEditors
     back
   elif [ $INP -eq 4 ]
   then
+    clear
   	Pen-Test
   	inputPen-Test
+    back
+  elif [ $INP -eq 5 ]
+  then
+    clear
+    programming
+    inputProgramming
+  elif [ $INP == s ]
+  then
+    clear
+    scripts
+    inputScripts
+  elif [ $INP == pp ]
+  then
+    clear
+    personalPref
+    inputPP
   elif [ $INP == h ]
   then
   	cd -
@@ -192,6 +244,15 @@ function inputAccess()
   then
     curl cheat.sh
     read
+  elif [ $INP -eq 6 ]
+  then
+    if command -v vlc
+    then
+      vlc
+      back
+    else
+      sudo apt-get install vlc
+    fi
   elif [ $INP -eq 00 ]
   then
     back
@@ -322,6 +383,86 @@ function inpuTools()
         back
       fi
     fi
+  elif [ $INP -eq 8 ]
+  then
+    if command -v git
+    then
+      git
+      read
+    else
+      error
+      read INP
+      if [ $INP == y ]
+      then
+        sudo apt-get install git
+      else
+        back
+      fi
+    fi
+  elif [ $INP -eq 9 ]
+  then
+    if command -v apache2
+    then
+      apache2 -v
+      read
+    else
+      error
+      read INP
+      if [ $INP == y ]
+      then
+        sudo apt-get install apache2
+      else
+        back
+      fi
+    fi
+  elif [ $INP -eq 10 ]
+  then
+    if command -v nginx
+    then
+      nginx -v
+      read
+    else
+      error
+      read INP
+      if [ $INP == y ]
+      then
+        sudo apt-get install nginx
+      else
+        back
+      fi
+    fi
+  elif [ $INP -eq 11 ]
+  then
+    if command -v mariadb
+    then
+      mariadb --version
+      read
+    else
+      error
+      read INP
+      if [ $INP == y ]
+      then
+        sudo apt-get install mariadb-server
+      else
+        back
+      fi
+    fi
+  elif [ $INP -eq 12 ]
+  then
+    if command -v docker
+    then
+      docker
+      read
+    else
+      error
+      read INP
+      if [ $INP == y ]
+      then
+        sudo apt-get install docker.io
+      else
+        back
+      fi
+    fi
   elif [ $INP -eq 123 ]
   then
     echo "YOU HAVE FOUND SECRET PLACE"
@@ -440,12 +581,129 @@ function inputPen-Test()
   				back
   			fi
   		fi
+    elif [ $INP -eq 00 ]
+    then
+      back
   	else
   		clear
   		echo "unknown command"
   		read -t 1
   		back
   	fi
+}
+
+function inputPP()
+{
+  read INP
+  if [ $INP -eq 1 ]
+  then
+    touch cl
+    chmod +x cl
+    echo "clear" >> cl
+    sudo mv cl /usr/bin
+  elif [ $INP -eq 2 ]
+  then
+    sudo apt-get update
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 3 ]
+  then
+    sudo apt-get upgrade
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 4 ]
+  then
+    echo "enter ip adress"
+    read INP
+    for i in {1..65535};do (echo </dev/tcp/172.17.0.1/$i) &>/dev/null && echo -e "\n[+] Open port at:\t$i" || echo -n ".";done
+    read
+  elif [ $INP -eq 5 ]
+  then
+    sudo apt-get intall parrot-tools
+    echo "you are armed up"
+  elif [ $INP -eq 00 ]
+  then
+    back
+  else
+    clear
+    echo "unknown command"
+    read -t 1
+    back
+  fi
+}
+
+function inputProgramming()
+{
+  read INP
+  if [ $INP -eq 1 ]
+  then
+    sudo apt-get install python3-sqlalchemy
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 2 ]
+  then
+    sudo apt-get install python3-flask
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 3 ]
+  then
+    sudo apt-get install python3-django
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 4 ]
+  then
+    sudo apt-get install python3-virtualenv
+    echo "DONE"
+    read -t 0.5
+  elif [ $INP -eq 00 ]
+  then
+    back
+  else
+    clear
+    echo "unknown command"
+    read -t 1
+    back
+  fi
+}
+
+function inputScripts()
+{
+  echo "***WARNING*** scripts will be downloaded on desktop ***WARNING***"
+  read INP
+  if [ $INP -eq 1 ]
+  then
+    cd /$HOME/Desktop/
+    git clone https://github.com/doomguy-369/apacheWheeleChair
+    cd -
+  elif [ $INP -eq 2 ]
+  then
+    cd /$HOME/Desktop/
+    git clone https://github.com/doomguy-369/dockerLamp-LagContainter
+    cd -
+  elif [ $INP -eq 3 ]
+  then
+    cd /$HOME/Desktop/
+    git clone https://github.com/doomguy-369/getInfo
+    cd -
+  elif [ $INP -eq 4 ]
+  then
+    cd /$HOME/Desktop/
+    git clone https://github.com/doomguy-369/taskMaster
+    cd -
+  elif [ $INP -eq 5 ]
+  then
+    cd /$HOME/Desktop/
+    git clone https://github.com/doomguy-369/passwordGenerator
+    cd -
+  elif [ $INP -eq 00 ]
+  then
+    back
+  else
+    clear
+    echo "unknown command"
+    read -t 1
+    back
+  fi
 }
 
 function back()
