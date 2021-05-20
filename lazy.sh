@@ -619,7 +619,7 @@ function inputPP()
     read
   elif [ $INP -eq 5 ]
   then
-    sudo apt-get intall parrot-tools
+    sudo apt-get intsall parrot-tools
     echo "you are armed up"
   elif [ $INP -eq 00 ]
   then
