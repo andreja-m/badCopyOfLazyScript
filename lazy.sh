@@ -621,6 +621,7 @@ function inputPP()
   then
     sudo apt-get intsall parrot-tools
     echo "you are armed up"
+    read
   elif [ $INP -eq 00 ]
   then
     back
